@@ -44,7 +44,7 @@
 } */
 
           majorItems = data.filter( (item) => item.major == selectedMajor );
-      var templateText = document.getElementById("tableTemplate").innerHTML;
+      var templateText = document.getElementById("majorTemplate").innerHTML;
       var compiledTemplateText = Handlebars.compile(templateText);
           compiledHtml = compiledTemplateText({ rows: data })
           document.getElementById("majorTable").innerHTML = compiledHtml;
