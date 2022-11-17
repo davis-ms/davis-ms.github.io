@@ -39,7 +39,7 @@
           majorItems = data.filter( (item) => item.major == selectedMajor );
       var templateText = document.getElementById("majorTemplate").innerHTML;
       var compiledTemplateText = Handlebars.compile(templateText);
-          compiledHtml = compiledTemplateText({ rows: data })
+          compiledHtml = compiledTemplateText({ rows: majorItems })
           document.getElementById("majorTable").innerHTML = compiledHtml;
     }
     else {
