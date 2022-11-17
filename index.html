@@ -36,14 +36,7 @@
     if(response.ok) {
       var data = await response.json();
 
-      major_items = []
-      for(i=0, i < data.length; i++) {
-      if(data[i].major == selectedMajor) {
-            major_items.push(data[i].major);
-      }
-}
-
-         /* majorItems = data.filter( (item) => item.major == selectedMajor );
+          majorItems = data.filter( (item) => item.major == selectedMajor );
       var templateText = document.getElementById("majorTemplate").innerHTML;
       var compiledTemplateText = Handlebars.compile(templateText);
           compiledHtml = compiledTemplateText({ rows: data })
@@ -52,7 +45,7 @@
     else {
         document.querySelector("#majorTable").innerHTML = "ERROR / Major Table not found";
       }
-  }*/
+  }
 </script>
 </body>
 </html>
