@@ -1,6 +1,5 @@
-<!DOCTYPE html><html>
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Program 5</title>
-
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Program 5</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -15,13 +14,13 @@
         <button type="button" class="btn, border" onClick="getData('CIT')">CIT Majors</button>
         <button type="button" class="btn, border" onClick="getData('BUS')">Business Majors</button>
       </div>
-    <h3 style="text-align: center;">Dataset is filtered by selected major</h3>
+    <h3 style="text-align: center;">Dataset is filtered by major-button selection</h3>
 
     <div id="majorTable"></div>
 
   </div>
-
-  <script id="majorTemplate" type="text/x-handlebars-template">
+  
+  <script id="majorTemplate" type="text/x-handlebars-template"> 
     <table class="table table-bordered table-striped">
         <tr><th>Name</th><th>Major</th><th>Midterm</th><th>Final</th></tr>
           {{#each rows}}
@@ -30,20 +29,19 @@
     </table>
   </script>
 
-<script> // ajax starter
+<script>
   async function getData(selectedMajor) {
-    var response = await fetch('cit5students.json'); // GET Request
+    var response = await fetch('cit5students.json');
       if(response.ok) {
         var data = await response.json();
-            majorItems = data.filter( (item) => item.major == selectedMajor ); // Array Filter
+            majorItems = data.filter( (item) => item.major == selectedMajor );
         var templateText = document.getElementById("majorTemplate").innerHTML;
         var compiledTemplateText = Handlebars.compile(templateText);
             compiledHtml = compiledTemplateText({ rows: majorItems })
             document.getElementById("majorTable").innerHTML = compiledHtml;
-      }
-      else {
+      } else {
           document.querySelector("#majorTable").innerHTML = "ERROR / Major Table not found";
-        }
+      }
   }
 </script>
 </body>
