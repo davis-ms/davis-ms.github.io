@@ -9,6 +9,7 @@
 </head>
 <body>
   <div class="container">
+    <h1 style="text-align: center;">Programming Project 5 - Davis</h1>
     <h2 style="text-align: center;">Select a Major</h2>
       <div style="margin: 35px; color: darkblue; text-align: center;">
         <button type="button" class="btn, border" onClick="getData('CIT')">CIT Majors</button>
@@ -31,20 +32,18 @@
 
 <script> // ajax starter
   async function getData(selectedMajor) {
-    var response = await fetch('cit5students.json');
-
-    if(response.ok) {
-      var data = await response.json();
-
-          majorItems = data.filter( (item) => item.major == selectedMajor );
-      var templateText = document.getElementById("majorTemplate").innerHTML;
-      var compiledTemplateText = Handlebars.compile(templateText);
-          compiledHtml = compiledTemplateText({ rows: majorItems })
-          document.getElementById("majorTable").innerHTML = compiledHtml;
-    }
-    else {
-        document.querySelector("#majorTable").innerHTML = "ERROR / Major Table not found";
+    var response = await fetch('cit5students.json'); // GET Request
+      if(response.ok) {
+        var data = await response.json();
+            majorItems = data.filter( (item) => item.major == selectedMajor ); // Array Filter
+        var templateText = document.getElementById("majorTemplate").innerHTML;
+        var compiledTemplateText = Handlebars.compile(templateText);
+            compiledHtml = compiledTemplateText({ rows: majorItems })
+            document.getElementById("majorTable").innerHTML = compiledHtml;
       }
+      else {
+          document.querySelector("#majorTable").innerHTML = "ERROR / Major Table not found";
+        }
   }
 </script>
 </body>
