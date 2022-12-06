@@ -40,7 +40,7 @@
                   <td>{{ticket.tid}}</td>
                   <td>{{ticket.stop_time}}</td>
                   <td>{{ticket.posted_speed}}</td>
-                  <td v-if="speedster >= 25">{{speedster}}</td>
+                  <td>{{ticket.actual_speed - ticket.posted_speed >= 25}}</td>
                   <td>{{ticket.violator_sex}}</td>
               </tr>
          </table>
@@ -62,8 +62,6 @@
                 async getData() {
                     const response = await fetch('tickets1.json')
                     this.tickets = await response.json()
-                    
-                    speedster = ticket.actual_speed - ticket.posted_speed
                     //tickets = data.filter( (ticket) => ticket.actual_speed - ticket.posted_speed >= 25 );     
                 },
             }
