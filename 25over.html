@@ -64,7 +64,7 @@
                     const response = await fetch('tickets1.json')
                     this.tickets = await response.json()
                     function highSpeed(ticket) 
-                         {return ticket.actual_speed - ticket.posted_speed >= 25;}
+                         {return {{ticket.actual_speed - ticket.posted_speed}} >= 25;}
                     this.tickets = tickets.filter(highSpeed)
                 },
                }
