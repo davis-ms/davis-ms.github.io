@@ -36,7 +36,7 @@
                   <th>MPH Over</th>
                   <th>Violator Sex</th>
               </tr>
-              <tr v-for = "speed in speeders">
+              <tr v-for = "ticket in tickets">
                   <td>{{ticket.tid}}</td>
                   <td>{{ticket.stop_time}}</td>
                   <td>{{ticket.posted_speed}}</td>
@@ -63,12 +63,10 @@
                 async getData() {
                     const response = await fetch('tickets1.json')
                     this.tickets = await response.json()
+                    this.tickets = tickets.filter(highSpeed)
                 },
-                getSpeed() {
-                    this.tickets = true
-                    this.speeders = this.tickets.filter((speed) => speed.actual_speed - speed.posted_speed >= 25);
-       }
-               },
+                 function highSpeed(ticket) {return ticket.actual_speed - ticket.posted_speed >= 25;}
+               }
           })
 
       app.mount('#ticketApp')   //in which div to mount the vue app
