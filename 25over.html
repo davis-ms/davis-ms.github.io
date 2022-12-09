@@ -37,11 +37,11 @@
                   <th>Violator Sex</th>
               </tr>
               <tr v-for = "ticket in tickets">
-                  <td v-for = "ticket in filteredSpeed">{{ticket.tid}}</td>
-                  <td v-for = "ticket in filteredSpeed">{{ticket.stop_time}}</td>
-                  <td v-for = "ticket in filteredSpeed">{{ticket.posted_speed}}</td>
-                  <td v-for = "ticket in filteredSpeed">{{ticket.actual_speed - ticket.posted_speed}}</td>
-                  <td v-for = "ticket in filteredSpeed">{{ticket.violator_sex}}</td>
+                  <td>{{ticket.tid}}</td>
+                  <td>{{ticket.stop_time}}</td>
+                  <td>{{ticket.posted_speed}}</td>
+                  <td>{{ticket.actual_speed - ticket.posted_speed}}</td>
+                  <td>{{ticket.violator_sex}}</td>
               </tr>
          </table>
 
