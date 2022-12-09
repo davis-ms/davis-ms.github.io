@@ -24,7 +24,7 @@
 
 </nav>    <!-- end nav-bar -->
 
-<div id="ticketApp" v-show"showTable">
+<div id="ticketApp">
 
      <h2>Tickets July 4, 2014, Minneapolis/St. Paul: 25 mph or over</h2>
 
@@ -36,12 +36,12 @@
                   <th>MPH Over</th>
                   <th>Violator Sex</th>
               </tr>
-              <tr v-for = "ticket in high_speed">
-                  <td>{{ticket.tid}}</td>
-                  <td>{{ticket.stop_time}}</td>
-                  <td>{{ticket.posted_speed}}</td>
-                  <td>{{ticket.actual_speed - ticket.posted_speed}}</td>
-                  <td>{{ticket.violator_sex}}</td>
+              <tr v-for = "ticket in tickets">
+                  <td v-show="ticket.actual_speed - ticket.posted_speed >= 25">{{ticket.tid}}</td>
+                  <td v-show="ticket.actual_speed - ticket.posted_speed >= 25">{{ticket.stop_time}}</td>
+                  <td v-show="ticket.actual_speed - ticket.posted_speed >= 25">{{ticket.posted_speed}}</td>
+                  <td v-show="ticket.actual_speed - ticket.posted_speed >= 25">{{ticket.actual_speed - ticket.posted_speed}}</td>
+                  <td v-show="ticket.actual_speed - ticket.posted_speed >= 25">{{ticket.violator_sex}}</td>
               </tr>
          </table>
 
@@ -52,7 +52,7 @@
        let app = Vue.createApp({
             data() {     // returns an object of data
                 return {
-                    tickets: [],     // array to hold student data
+                    tickets: [],           // array to hold student data
                 }
             },
             created() {      // section executes as page loads
