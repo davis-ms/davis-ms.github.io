@@ -37,11 +37,11 @@
                   <th>Violator Sex</th>
               </tr>
               <tr v-for = "ticket in tickets">
-                  <td>{{ticket.tid}}</td>
-                  <td>{{ticket.stop_time}}</td>
-                  <td>{{ticket.posted_speed}}</td>
-                  <td>{{ticket.actual_speed - (ticket.posted_speed > 25)}}</td>
-                  <td>{{ticket.violator_sex}}</td>
+                  <td v-show="ticket.actual_speed - ticket.posted_speed >= 25">{{ticket.tid}}</td>
+                  <td v-show="ticket.actual_speed - ticket.posted_speed >= 25">{{ticket.stop_time}}</td>
+                  <td v-show="ticket.actual_speed - ticket.posted_speed >= 25">{{ticket.posted_speed}}</td>
+                  <td v-show="ticket.actual_speed - ticket.posted_speed >= 25">{{ticket.actual_speed - ticket.posted_speed > 25}}</td>
+                  <td v-show="ticket.actual_speed - ticket.posted_speed >= 25">{{ticket.violator_sex}}</td>
               </tr>
          </table>
 
