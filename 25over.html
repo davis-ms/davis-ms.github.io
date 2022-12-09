@@ -65,7 +65,8 @@
                     function isBigEnough(value) {
                        return value >= 25;
                       }
-                    const filtered = tickets.filter(isBigEnough);
+                    const filtered = tickets.filter(isBigEnough)
+                    this.tickets = filtered
                 },
             }
           })
