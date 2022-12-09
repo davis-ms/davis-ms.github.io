@@ -24,7 +24,7 @@
 
 </nav>    <!-- end nav-bar -->
 
-<div id="ticketApp">
+<div id="ticketApp" v-show"showTable">
 
      <h2>Tickets July 4, 2014, Minneapolis/St. Paul: 25 mph or over</h2>
 
@@ -36,7 +36,7 @@
                   <th>MPH Over</th>
                   <th>Violator Sex</th>
               </tr>
-              <tr v-for = "ticket in tickets">
+              <tr v-for = "ticket in high_speed">
                   <td>{{ticket.tid}}</td>
                   <td>{{ticket.stop_time}}</td>
                   <td>{{ticket.posted_speed}}</td>
@@ -52,7 +52,8 @@
        let app = Vue.createApp({
             data() {     // returns an object of data
                 return {
-                    tickets: [],           // array to hold student data
+                    tickets: [],     // array to hold student data
+                    high_speed: [],
                 }
             },
             created() {      // section executes as page loads
@@ -62,8 +63,11 @@
                 async getData() {
                     const response = await fetch('tickets1.json')
                     this.tickets = await response.json()
-                    this.tickets.filter( (ticket) => ticket.actual_speed - ticket.posted_speed == 25))
                 },
+                getSpeed() {
+                    this.showTable = true
+                    this.high_speed = this.tickets.filter( (ticket) => ticket.actual_speed - ticket.posted_speed && > 25);
+                }
             }
           })
 
