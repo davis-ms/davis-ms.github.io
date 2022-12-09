@@ -66,8 +66,8 @@
                 },
                 getSpeed() {
                     this.showTable = true
-                    this.high_speed = this.tickets.filter( (ticket) => ticket.actual_speed - ticket.posted_speed && > 25);
-                }
+                    this.high_speed = this.tickets.filter( (ticket) => ticket.actual_speed - ticket.posted_speed > 25);
+                },
             }
           })
 
