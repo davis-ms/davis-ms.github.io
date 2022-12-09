@@ -36,7 +36,7 @@
                   <th>MPH Over</th>
                   <th>Violator Sex</th>
               </tr>
-              <tr v-for = "ticket in tickets">
+              <tr v-for = "filteredSpeed() in tickets">
                   <td>{{ticket.tid}}</td>
                   <td>{{ticket.stop_time}}</td>
                   <td>{{ticket.posted_speed}}</td>
@@ -58,17 +58,15 @@
             },
             created() {      // section executes as page loads
                 this.getData()  // load json data as page loads
-             return this.tickets.filter(ticket => ticket.actual_speed - ticket.posted_speed > 25);
             },
             methods: {    // ajax request
                 async getData() {
                     const response = await fetch('tickets1.json')
                     this.tickets = await response.json()
-                    return this.tickets.filter(ticket => ticket.actual_speed - ticket.posted_speed > 25);
                 },
              computed: {
                 filteredSpeed() {
-                    return this.tickets.filter(ticket => ticket.actual_speed - ticket.posted_speed > 25);
+                    return this.tickets.filter(ticket => ticket.actual_speed - ticket.posted_speed > 25)
                 } 
              },
                }
