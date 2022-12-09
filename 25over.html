@@ -54,7 +54,6 @@
                 return {
                     tickets: [],    // array to hold student data
                     
-                    var speedster = tickets.filter( (ticket) => ticket.actual_speed - ticket.posted_speed >= 25 )
                 }
             },
             created() {      // section executes as page loads
@@ -64,6 +63,9 @@
                 async getData() {
                     const response = await fetch('tickets1.json')
                     this.tickets = await response.json()
+                },
+                filter_data () {
+                  var speedster = tickets.filter( (ticket) => ticket.actual_speed - ticket.posted_speed >= 25 )
                 },
             }
           })
