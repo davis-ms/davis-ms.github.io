@@ -64,10 +64,10 @@
                     const response = await fetch('tickets1.json')
                     this.tickets = await response.json()
                 },
+               created: function() {
+                       this.tickets.filter((ticket) => ticket.violator_sex == "Male")
                }
-           mounted() {
-                     this.tickets = this.tickets.filter((ticket) => ticket.actual_speed > 60);
-       }
+               }
             }
           })
 
